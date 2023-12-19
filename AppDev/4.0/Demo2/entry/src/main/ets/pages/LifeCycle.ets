@@ -10,6 +10,10 @@ struct LifeCycle {
     // await getDataApi()
     this.Obj = { name: '沐枫', age: 18}
   }
+  
+  /*
+	只有在使用@Entry修饰的自定义组件，下这3个命周期回调函数 onPageShow、onPageHide、onBackPress 才会生效哦！！
+  */
 
   onPageShow(){
     console.log('2、onPageShow，进入页面显示时触发！')
