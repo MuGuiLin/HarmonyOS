@@ -1,7 +1,7 @@
 @Component
 export struct ItemComponent {
 // export default struct ItemComponent {
-  @State isClick:Boolean = false
+  @State isClick:boolean = false
 
   build(){
     Row(){

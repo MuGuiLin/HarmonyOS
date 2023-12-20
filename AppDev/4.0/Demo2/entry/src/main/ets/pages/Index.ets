@@ -4,7 +4,7 @@ import { TitleComponent } from './Rank/Title'
 @Component
 struct Index {
   @State message: string = 'Hello World'
-  @State is:Boolean = true
+  @State is: boolean = true
 
   build() {
     Column() {
