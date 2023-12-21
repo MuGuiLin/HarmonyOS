@@ -1,4 +1,4 @@
-import { TitleComponent } from './Title'
+import { HeaderComponent } from '../Header'
 // import { ItemComponent } from './Item'
 
 @Entry
@@ -30,7 +30,7 @@ struct RankPage {
   build(){
     Column(){
       // TitleComponent({isRefresh: this.is}) // 在传参时获取变量前面不能用this.
-      TitleComponent({ isRefresh: $isRef }) // 在传参时获取变量前面用$，以引用的方式来获取
+      HeaderComponent({ isRefresh: $isRef }) // 在传参时获取变量前面用$，以引用的方式来获取
 
       Column(){
         List(){

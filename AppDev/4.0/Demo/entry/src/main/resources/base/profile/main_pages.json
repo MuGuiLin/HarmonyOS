@@ -1,7 +1,8 @@
 {
   "src": [
     "pages/LifeCycle",
-    "pages/Tabs",
-    "pages/Index"
+    "pages/Index",
+    "pages/Tabs"
+
   ]
 }
