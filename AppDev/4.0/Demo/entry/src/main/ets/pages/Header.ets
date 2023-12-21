@@ -29,6 +29,6 @@ export struct HeaderComponent{
       //   this.isRefresh = !this.isRefresh
       // })
     }.justifyContent(FlexAlign.SpaceBetween).padding(10)
-    .width('100%').height(50).backgroundColor('#0EA5F3')
+    .width('100%').height(50).backgroundColor('#007DFF')
   }
 }

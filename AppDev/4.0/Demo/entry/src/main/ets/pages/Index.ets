@@ -9,36 +9,57 @@ struct Index {
   build() {
     Column() {
       Text('基本语法使用')
-        .fontSize(52)
+        .padding(20)
+        .fontSize(36)
         .fontWeight(FontWeight.Bold)
+
+      Divider();
 
       if(this.is) {
         Text(this.message)
           .padding(20)
           .fontSize(32)
           .fontWeight(FontWeight.Bold)
-          .fontColor(Color.Blue)
+          .fontColor('#007DFF')
       } else {
         Text(this.message)
           .padding(20)
           .fontSize(32)
           .fontWeight(FontWeight.Bold)
-          .fontColor(Color.Blue)
       }
+      Text(this.message)
+        .padding(20)
+        .fontSize(32)
+        .fontWeight(FontWeight.Bold)
+        .fontColor(this.is ? '#007DFF' : Color.Pink)
 
       Row() {
         Button('取肖').onClick(() => {
+          this.is = false;
           this.message = 'Hello World'
-        }).padding(10).width(120).fontSize(30).borderWidth(1).borderColor('#FF007DFF').backgroundColor(Color.Gray)
+        }).padding(10).width(120).fontSize(20).borderWidth(1).borderColor('#FF007DFF').backgroundColor(Color.Gray)
 
         Button('确认').onClick(() => {
+          this.is = true;
           this.message = 'Hello 沐枫'
-        }).margin(20).padding({ top: 8, right: 20, bottom: 8, left: 20 }).width(120).fontSize(30)
+        }).margin(20).padding({ top: 8, right: 20, bottom: 8, left: 20 }).width(120).fontSize(20)
       }
+
+      Divider();
 
       this.RouterNav()
     }
     .height('100%')
+  }
+
+  goto(url):void{
+    go.pushUrl({ url }).then((res) => {
+      console.log('页面跳转成功回调!', JSON.stringify(res));
+    }).catch((err) => {
+      console.info('页面跳转失败回调!', err);
+    }).finally(() => {
+      console.info('页面跳转成功/失败都会回调!');
+    })
   }
 
   @Builder RouterNav(){
@@ -55,16 +76,22 @@ struct Index {
             console.info('页面跳转成功/失败都会回调!');
           })
         }).margin(5)
+      }
 
+      Row() {
+        // 配置事件的3种方式
+        // 1、使用lambda表达式配置组件的事件方法。
         Button('LifeCycle ').onClick(() => {
-          go.pushUrl({ url: 'pages/LifeCycle' }).then((res) => {
-            console.log('页面跳转成功回调!', JSON.stringify(res));
-          }).catch((err) => {
-            console.info('页面跳转失败回调!', err);
-          }).finally(() => {
-            console.info('页面跳转成功/失败都会回调!');
-          })
+          this.goto('pages/LifeCycle');
         }).margin(5)
+
+        // 2、使用匿名函数表达式配置组件的事件方法，要求使用bind，以确保函数体中的this指向当前组件。
+        Button('LifeCycle ').onClick(function() {
+          this.goto('pages/LifeCycle');
+        }.bind(this)).margin(5)
+
+        // 3、使用组件的成员函数配置组件的事件方法。
+        Button('LifeCycle ').margin(5).onClick(this.goto.bind(this,'pages/LifeCycle'))
       }
     }
     .padding(20)
