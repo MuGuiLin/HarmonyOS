@@ -1,8 +1,11 @@
+import router from '@ohos.router';
 import { HeaderComponent } from './Header'
 
 @Entry // 注： @Entry 装饰器 在页面中只有出现1次
 @Component
 struct LifeCycle {
+  @State ids:number = router.getParams()?.['id'];
+
   @State is:boolean = true;
   @State Obj:any = {};
   @State Arr:any[] = [];
@@ -40,6 +43,16 @@ struct LifeCycle {
     Column(){
       HeaderComponent({ isRefresh: $is });
       Text('页面生命周期、生命钩子函数！').padding(20).fontSize(20);
+      Text(`接收到上一个路由页面传来的参数：${this.ids}`).padding(20).fontSize(20);
+
+      Button('自定义返回').onClick(() =>{
+        // 在调用router.back()方法之前，可以先调用router.enableBackPageAlert()方法开启页面返回询问对话框功能。
+        router.enableBackPageAlert({
+          message: 'Message Info'
+        });
+
+        router.back();
+      })
     }
 
   }

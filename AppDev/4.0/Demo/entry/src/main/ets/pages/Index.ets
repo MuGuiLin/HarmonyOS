@@ -53,7 +53,7 @@ struct Index {
   }
 
   goto(url):void{
-    go.pushUrl({ url }).then((res) => {
+    go.pushUrl({ url, params: {id: Math.random()} }).then((res) => {
       console.log('页面跳转成功回调!', JSON.stringify(res));
     }).catch((err) => {
       console.info('页面跳转失败回调!', err);
