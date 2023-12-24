@@ -47,9 +47,9 @@ struct LifeCycle {
 
       Button('自定义返回').onClick(() =>{
         // 在调用router.back()方法之前，可以先调用router.enableBackPageAlert()方法开启页面返回询问对话框功能。
-        router.enableBackPageAlert({
-          message: 'Message Info'
-        });
+        // router.enableBackPageAlert({
+        //   message: 'Message Info'
+        // });
 
         router.back();
       })
