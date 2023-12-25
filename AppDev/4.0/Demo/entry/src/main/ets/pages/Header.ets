@@ -3,8 +3,12 @@ import router from '@ohos.router';
 @Component
 export struct HeaderComponent{
 
-  // @Link 装饰的变量，可以和父组件中 @State装饰的变量 建业双向数据绑定，任何一方改量都会影响另一方！！
-  @Link isRefresh: boolean;
+  // @Link 装饰的变量，可以和父组件中 @State装饰的变量(要用 $引用 传参数) 建业双向数据绑定，任何一方改量都会影响另一方！！
+  @Link @Watch('onClickIsRefreshChange') isRefresh: boolean;
+
+  onClickIsRefreshChange(isRefresh){
+    console.log('监听isRefresh被修改了', isRefresh)
+  }
 
   build(){
     Row(){

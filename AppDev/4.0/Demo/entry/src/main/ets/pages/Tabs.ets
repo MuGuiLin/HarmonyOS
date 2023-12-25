@@ -1,8 +1,13 @@
+import Index from './Index';
+import Rank from './Rank/Index';
+
 @Entry
 @Component
 struct TabsPage{
   @State active:number = 0
   @State pos: BarPosition = BarPosition.End
+
+  private tabsController: TabsController = new TabsController()
 
   @Builder TabBuilder(name: string,tag:number, icon: Resource, icon_h:Resource){
     Column(){
@@ -12,19 +17,21 @@ struct TabsPage{
       // @ts-ignore
       console.log(tag)
       this.pos = 2 === tag ? BarPosition.Start :  BarPosition.End;
-      this.active = tag
+      this.tabsController.changeIndex(tag);
     })
   }
 
   build(){
-    Tabs({ barPosition: this.pos}){
+    Tabs({ barPosition: this.pos, controller: this.tabsController}){
       TabContent(){
-        Text('首页内容').fontSize(56)
+        // Text('首页内容').fontSize(56);
+        Index()
       }
       .tabBar('首页')
 
       TabContent(){
-        Text('列表内容').fontSize(56)
+        // Text('列表内容').fontSize(56);
+        Rank()
       }
       .tabBar('列表')
 
@@ -40,5 +47,13 @@ struct TabsPage{
       // .tabBar('我的')
       .tabBar(this.TabBuilder('下面', 3, $r('app.media.learn'), $r('app.media.learn_h')))
     }.vertical(false)
+    .barWidth('100%')
+    .barHeight(56)
+    .barMode(BarMode.Fixed)
+    .onChange((index: number) => {
+      console.log(`${index}`)
+      // 在滑动页签后，给对应的tabBar添加高亮效果
+      this.active = index
+    })
   }
 }

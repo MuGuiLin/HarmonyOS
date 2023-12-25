@@ -13,8 +13,6 @@ function inputStyle() {
 struct Login {
   @State isLogin: boolean = false
 
-
-
   build() {
     Row() {
       Column() {
@@ -39,6 +37,11 @@ struct Login {
           .type(InputType.Password)
           .inputStyle()
 
+        Row(){
+          Text('短信验证').fontColor($r('app.color.primary'))
+          Text('忘记密码').fontColor($r('app.color.primary'))
+        }.padding(20).width('100%').justifyContent(FlexAlign.SpaceBetween)
+
         Button('登 录', { type: ButtonType.Capsule}).margin({top: 50, bottom:20}).width('90%').onClick(() => {
           this.isLogin = !this.isLogin;
         })
@@ -48,12 +51,12 @@ struct Login {
           .fontColor($r('app.color.primary'))
           .fontWeight(FontWeight.Bold)
 
-        Text('其他登录方式').margin({top: 50}).fontColor($r('app.color.default'))
+        Text('其他登录方式').margin({top: 50, bottom: 10}).fontColor($r('app.color.default'))
 
-        Row() {
-          Button('方式A', { type: ButtonType.Circle}).margin(10).padding(5).backgroundColor($r('app.color.default'))
-          Button('方式B', { type: ButtonType.Circle}).margin(10).padding(5).backgroundColor($r('app.color.default'))
-          Button('方式C', { type: ButtonType.Circle}).margin(10).padding(5).backgroundColor($r('app.color.default'))
+        Row({space: 20}) {
+          Button('方式A', { type: ButtonType.Circle}).padding(5).backgroundColor($r('app.color.default'))
+          Button('方式B', { type: ButtonType.Circle}).padding(5).backgroundColor($r('app.color.default'))
+          Button('方式C', { type: ButtonType.Circle}).padding(5).backgroundColor($r('app.color.default'))
         }
 
       }

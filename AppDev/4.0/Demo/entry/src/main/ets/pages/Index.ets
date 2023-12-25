@@ -2,7 +2,7 @@ import go from '@ohos.router';
 
 @Entry
 @Component
-struct Index {
+export default struct Index {
   @State message: string = 'Hello World'
   @State is: boolean = true
 

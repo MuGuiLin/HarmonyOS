@@ -41,7 +41,7 @@ struct LifeCycle {
   // 在页面或组件中必须有且只有1个build()方法，用于渲染UI组件的，相当于 Vue中的<template>
   build(){
     Column(){
-      HeaderComponent({ isRefresh: $is });
+      HeaderComponent({ isRefresh: $is });  // 用$引用方式 向子组件传参，子组件用@Link接收修改后，父组件对应参数也会被修改
       Text('页面生命周期、生命钩子函数！').padding(20).fontSize(20);
       Text(`接收到上一个路由页面传来的参数：${this.ids}`).padding(20).fontSize(20);
 
