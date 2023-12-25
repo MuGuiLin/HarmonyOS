@@ -1,5 +1,6 @@
 import Index from './Index';
 import Rank from './Rank/Index';
+import { ToDoList } from './ToDoList/List';
 
 @Entry
 @Component
@@ -36,7 +37,8 @@ struct TabsPage{
       .tabBar('列表')
 
       TabContent(){
-        Text('发现').fontSize(56)
+        // Text('发现').fontSize(56)
+        ToDoList()
       }
       // .tabBar('发现')
       .tabBar(this.TabBuilder('上面', 2, $r('app.media.study'), $r('app.media.study_h')))

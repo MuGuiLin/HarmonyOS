@@ -1,7 +1,7 @@
 import Item from './Item'
 @Entry
 @Component
-struct ToDoList{
+export struct ToDoList{
 
   @State Data: Array<string> = [];
 
@@ -13,7 +13,7 @@ struct ToDoList{
     Column(){
       Text('待办列表').margin({bottom: 20}).width('100%').height(50).fontColor('#fff').fontSize(26).textAlign(TextAlign.Center).backgroundColor('#ffe08312')
       ForEach(this.Data, (o, i) => {
-        Item({index: i, content: o })
+        Item({ item: o, index: i, attrs: this.Data })
       })
 
     }
