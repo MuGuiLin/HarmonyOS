@@ -10,7 +10,7 @@ console.log('UIAbility生周期回调函数（钩子）, UIAbility主要于处�
  *
  *  UIAbility的启动模式：3种，要修改UIAbility的启动模式，可以在module.json5配置文件中的"launchType"字段
  *    UIAbility当前支持：
- *        1、singleton（单实例模式【默认】）； 注：API9及以上，router.pushUrl()方法，默认的跳转页面使用的模式
+ *        1、singleton（单实例模式【默认】）； 注：API9及以上，router.pushUrl()方法，默认的跳转页面使用的模式，router.pushUrl()方法的mode参数可以配置为Standard和Single
  *        2、multiton（多实例模式）；
  *        3、specified（指定实例模式）；
  *
