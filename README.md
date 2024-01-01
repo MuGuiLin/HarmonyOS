@@ -8,6 +8,3 @@
 
 [华为开发者官方网站_创新从这里开始 (huawei.com)](https://developer.huawei.com/)
 
-
-
-[ArkTS 语言 | 华为开发者联盟 (huawei.com)](https://developer.huawei.com/consumer/cn/arkts/)
