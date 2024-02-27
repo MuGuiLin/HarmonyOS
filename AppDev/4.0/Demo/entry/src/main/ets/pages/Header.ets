@@ -1,19 +1,19 @@
 import router from '@ohos.router';
 
 @Component
-export struct HeaderComponent{
+export struct HeaderComponent {
 
   // @Link 装饰的变量，可以和父组件中 @State装饰的变量(要用 $引用 传参数) 建业双向数据绑定，任何一方改量都会影响另一方！！
   @Link @Watch('onClickIsRefreshChange') isRefresh: boolean;
 
-  onClickIsRefreshChange(isRefresh){
+  onClickIsRefreshChange(isRefresh) {
     console.log('监听isRefresh被修改了', isRefresh)
   }
 
-  build(){
-    Row(){
+  build() {
+    Row() {
       // Text('< 返回').fontColor('#fff').fontSize(26).onClick(() => router.back())
-      Text('< 返回').fontColor('#fff').fontSize(26).onClick(() =>{
+      Text('< 返回').fontColor('#fff').fontSize(26).onClick(() => {
         try {
           router.back();
           console.log('OK，返回成功！');
@@ -23,8 +23,8 @@ export struct HeaderComponent{
           console.log('try catch finally');
         }
       })
-      
-      Image($r('app.media.random_h')).width(30).height(30).onClick(()=>{
+
+      Image($r('app.media.random_h')).width(30).height(30).onClick(() => {
         this.isRefresh = !this.isRefresh
         // @ts-ignore
         console.log(this.isRefresh)
@@ -32,7 +32,11 @@ export struct HeaderComponent{
       // Button('刷新').onClick(()=>{
       //   this.isRefresh = !this.isRefresh
       // })
-    }.justifyContent(FlexAlign.SpaceBetween).padding(10)
-    .width('100%').height(50).backgroundColor('#007DFF')
+    }
+    .justifyContent(FlexAlign.SpaceBetween)
+    .padding(10)
+    .width('100%')
+    .height(50)
+    .backgroundColor('#007DFF')
   }
 }
